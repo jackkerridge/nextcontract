@@ -1,0 +1,2224 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NextContract — Find Your Next Contract Before Your Competitors Do</title>
+<meta name="description" content="NextContract researches commercial projects, tenders and development opportunities, then sends contractors the ones most relevant to their business.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#ffffff;
+    --surface:#F6F8FC;
+    --surface-alt:#EEF2F9;
+    --navy:#0B1F3A;
+    --navy-soft:#4B5872;
+    --navy-faint:#7C879C;
+    --border:#E3E8F0;
+    --border-strong:#CBD5E3;
+    --blue:#2454E0;
+    --blue-dark:#1B3FB8;
+    --blue-light:#EAF0FE;
+    --green:#0F9D58;
+    --green-light:#E7F7EE;
+    --amber:#B7791F;
+    --amber-light:#FBF3E1;
+    --purple:#7C5CFC;
+    --purple-light:#F1EEFF;
+    --danger:#FF6B6B;
+    --danger-light:rgba(255,107,107,0.14);
+    --radius-sm:12px;
+    --radius-md:18px;
+    --radius-lg:28px;
+    --radius-xl:32px;
+    --radius-full:999px;
+    --shadow-xs:0 1px 2px rgba(11,31,58,0.04);
+    --shadow-sm:0 2px 6px rgba(11,31,58,0.05), 0 1px 2px rgba(11,31,58,0.04);
+    --shadow-md:0 4px 10px rgba(11,31,58,0.04), 0 16px 36px rgba(11,31,58,0.09);
+    --shadow-lg:0 12px 24px rgba(11,31,58,0.06), 0 36px 80px rgba(11,31,58,0.16);
+    --shadow-blue:0 16px 40px rgba(36,84,224,0.22), 0 4px 10px rgba(36,84,224,0.12);
+    --ease:cubic-bezier(.16,.8,.24,1);
+    --font-display:'Space Grotesk',sans-serif;
+    --font-body:'Inter',sans-serif;
+    --font-mono:'JetBrains Mono',monospace;
+    --max:1180px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  section[id]{scroll-margin-top:88px;}
+  body{
+    margin:0;
+    background:var(--white);
+    color:var(--navy);
+    font-family:var(--font-body);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.55;
+    overflow-x:hidden;
+    letter-spacing:-0.006em;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{margin:0;padding:0;list-style:none;}
+  h1,h2,h3,h4{font-family:var(--font-display);margin:0;line-height:1.08;letter-spacing:-0.025em;color:var(--navy);}
+  p{margin:0;}
+  button{font-family:inherit;cursor:pointer;}
+  .container{max-width:var(--max);margin:0 auto;padding:0 32px;}
+  @media (max-width:560px){ .container{padding:0 20px;} }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  :focus-visible{outline:2.5px solid var(--blue);outline-offset:3px;border-radius:6px;}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    font-weight:500;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--blue);
+    background:var(--blue-light);
+    border:1px solid rgba(36,84,224,0.14);
+    padding:8px 15px 8px 12px;
+    border-radius:var(--radius-full);
+  }
+  .eyebrow::before{
+    content:"";
+    width:6px;height:6px;border-radius:50%;
+    background:var(--blue);
+    flex:none;
+    box-shadow:0 0 0 3px rgba(36,84,224,0.16);
+  }
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:15.5px;
+    letter-spacing:-0.01em;
+    padding:15px 28px;
+    border-radius:var(--radius-sm);
+    border:1.5px solid transparent;
+    transition:transform .32s var(--ease), box-shadow .32s var(--ease), background .25s ease, border-color .25s ease, color .25s ease;
+    white-space:nowrap;
+    position:relative;
+    will-change:transform;
+  }
+  .btn::after{
+    content:"";
+    width:15px;height:15px;
+    background:no-repeat center / contain;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M5 12h13M13 6l6 6-6 6' stroke='currentColor' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    opacity:0;
+    transform:translateX(-6px);
+    transition:opacity .28s ease, transform .28s var(--ease);
+  }
+  .btn:hover::after{opacity:1;transform:translateX(0);}
+  .btn-primary{
+    background:var(--blue);
+    color:#fff;
+    box-shadow:0 1px 0 rgba(11,31,58,0.05), 0 12px 28px rgba(36,84,224,0.24);
+  }
+  .btn-primary:hover{background:var(--blue-dark);transform:translateY(-3px);box-shadow:var(--shadow-blue);}
+  .btn-primary:active{transform:translateY(-1px) scale(.98);}
+  .btn-secondary{
+    background:#fff;
+    color:var(--navy);
+    border-color:var(--border-strong);
+    box-shadow:var(--shadow-xs);
+  }
+  .btn-secondary:hover{border-color:var(--navy);transform:translateY(-3px);box-shadow:var(--shadow-sm);}
+  .btn-secondary:active{transform:translateY(-1px) scale(.98);}
+  .btn-block{width:100%;}
+  .btn-sm{padding:11.5px 20px;font-size:14px;}
+  .btn-sm::after{width:12px;height:12px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,0.72);
+    backdrop-filter:blur(18px) saturate(1.4);
+    -webkit-backdrop-filter:blur(18px) saturate(1.4);
+    border-bottom:1px solid transparent;
+    transition:border-color .35s ease, box-shadow .35s ease, background .35s ease, padding .3s ease;
+  }
+  header.scrolled{
+    border-bottom-color:var(--border);
+    box-shadow:0 8px 30px rgba(11,31,58,0.05);
+    background:rgba(255,255,255,0.88);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 32px;
+    max-width:var(--max);margin:0 auto;
+    transition:padding .3s ease;
+  }
+  header.scrolled .nav{padding:15px 32px;}
+  .logo{
+    display:flex;align-items:center;gap:11px;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:19.5px;
+    color:var(--navy);
+    letter-spacing:-0.02em;
+  }
+  .logo-mark{
+    width:33px;height:33px;border-radius:10px;
+    background:linear-gradient(155deg,var(--blue),var(--blue-dark));
+    display:flex;align-items:center;justify-content:center;
+    flex:none;
+    box-shadow:0 4px 12px rgba(36,84,224,0.35), inset 0 1px 0 rgba(255,255,255,0.2);
+  }
+  .logo-mark svg{width:17px;height:17px;}
+  .nav-links{display:flex;align-items:center;gap:36px;}
+  .nav-links a{
+    font-size:14.5px;font-weight:500;color:var(--navy-soft);
+    transition:color .2s ease;
+    position:relative;
+    padding:4px 0;
+  }
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:0;width:100%;height:1.5px;
+    background:var(--blue);
+    transform:scaleX(0);transform-origin:right;
+    transition:transform .3s var(--ease);
+  }
+  .nav-links a:hover{color:var(--navy);}
+  .nav-links a:hover::after{transform:scaleX(1);transform-origin:left;}
+  .nav-right{display:flex;align-items:center;gap:18px;}
+  .nav-cta{display:flex;align-items:center;gap:20px;}
+
+  .hamburger{
+    display:none;
+    width:40px;height:40px;
+    align-items:center;justify-content:center;
+    border-radius:9px;border:1.5px solid var(--border-strong);
+    background:transparent;
+  }
+  .hamburger span{position:relative;width:16px;height:1.5px;background:var(--navy);display:block;}
+  .hamburger span::before,.hamburger span::after{
+    content:"";position:absolute;width:16px;height:1.5px;background:var(--navy);left:0;transition:transform .2s ease;
+  }
+  .hamburger span::before{top:-5px;}
+  .hamburger span::after{top:5px;}
+
+  .mobile-menu{
+    display:none;
+    position:fixed;inset:0;z-index:200;
+    background:#fff;
+    padding:22px 28px;
+    flex-direction:column;
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px;}
+  .mobile-menu a{
+    font-family:var(--font-display);
+    font-size:26px;font-weight:600;
+    padding:14px 0;border-bottom:1px solid var(--border);
+    color:var(--navy);
+  }
+  .mobile-menu .btn{margin-top:28px;}
+  .close-btn{width:40px;height:40px;border-radius:9px;border:1.5px solid var(--border-strong);background:none;position:relative;}
+  .close-btn::before,.close-btn::after{content:"";position:absolute;width:16px;height:1.5px;background:var(--navy);top:50%;left:50%;}
+  .close-btn::before{transform:translate(-50%,-50%) rotate(45deg);}
+  .close-btn::after{transform:translate(-50%,-50%) rotate(-45deg);}
+
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+    .nav-cta .btn-secondary{display:none;}
+  }
+
+  /* ---------- SECTION UTILS ---------- */
+  section{position:relative;}
+  .section-pad{padding:168px 0;}
+  .section-head{max-width:620px;margin-bottom:80px;}
+  .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+  .section-head h2{font-size:clamp(32px,4.4vw,46px);margin-top:20px;}
+  .section-head p{font-size:18.5px;color:var(--navy-soft);margin-top:20px;line-height:1.65;}
+  .alt{background:var(--surface);}
+  @media (max-width:900px){ .section-pad{padding:110px 0;} .section-head{margin-bottom:56px;} }
+  @media (max-width:600px){ .section-pad{padding:84px 0;} .section-head{margin-bottom:44px;} }
+
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease), transform .9s var(--ease);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  .reveal-stagger > *{transition-delay:calc(var(--i, 0) * 110ms);}
+
+  /* ---------- THE PROBLEM ---------- */
+  .problem-section{
+    background:
+      radial-gradient(700px 380px at 12% -10%, rgba(255,107,107,0.10), transparent 60%),
+      radial-gradient(600px 360px at 90% 110%, rgba(36,84,224,0.14), transparent 60%),
+      linear-gradient(160deg,#0E2444,var(--navy) 65%);
+    position:relative;
+    overflow:hidden;
+  }
+  .problem-section::before{
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:56px 56px;
+    -webkit-mask-image:radial-gradient(900px 500px at 50% 0%, black, transparent 70%);
+    mask-image:radial-gradient(900px 500px at 50% 0%, black, transparent 70%);
+  }
+  .problem-section .container{position:relative;}
+  .problem-head{max-width:680px;margin-bottom:64px;}
+  .problem-head .eyebrow{background:rgba(255,107,107,0.14);color:#FF9B9B;border-color:rgba(255,107,107,0.22);}
+  .problem-head .eyebrow::before{background:#FF9B9B;box-shadow:0 0 0 3px rgba(255,107,107,0.18);}
+  .problem-head h2{color:#fff;font-size:clamp(32px,4.6vw,48px);margin-top:20px;max-width:640px;}
+
+  .problem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .problem-card{
+    background:rgba(255,255,255,0.045);
+    border:1px solid rgba(255,255,255,0.09);
+    border-radius:var(--radius-lg);
+    padding:34px 28px;
+    transition:transform .4s var(--ease), background .4s ease, border-color .4s ease;
+  }
+  .problem-card:hover{transform:translateY(-6px);background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.16);}
+  .problem-icon{
+    width:48px;height:48px;border-radius:14px;
+    background:var(--danger-light);
+    border:1px solid rgba(255,107,107,0.2);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:24px;
+    transition:transform .4s var(--ease);
+  }
+  .problem-card:hover .problem-icon{transform:scale(1.08) rotate(-4deg);}
+  .problem-icon svg{width:21px;height:21px;color:#FF9B9B;}
+  .problem-card h3{color:#fff;font-size:18.5px;margin-bottom:10px;}
+  .problem-card p{color:#AEBBD6;font-size:14.5px;line-height:1.65;}
+
+  .problem-footer{
+    margin-top:64px;padding-top:44px;border-top:1px solid rgba(255,255,255,0.1);
+    text-align:center;
+  }
+  .problem-footer p{
+    font-family:var(--font-display);font-weight:600;
+    font-size:clamp(26px,4vw,38px);color:#fff;letter-spacing:-0.02em;
+  }
+  .problem-footer p span{
+    background:linear-gradient(120deg,#6C93FF,#8FD9B4);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+
+  @media (max-width:980px){ .problem-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:600px){
+    .problem-grid{grid-template-columns:1fr;}
+    .problem-head{margin-bottom:44px;}
+    .problem-footer{margin-top:44px;padding-top:32px;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:120px 0 80px;
+    background:
+      radial-gradient(900px 500px at 86% -12%, rgba(36,84,224,0.10), transparent 62%),
+      radial-gradient(500px 320px at -6% 30%, rgba(36,84,224,0.05), transparent 60%),
+      var(--white);
+    background-image:
+      radial-gradient(900px 500px at 86% -12%, rgba(36,84,224,0.10), transparent 62%),
+      radial-gradient(500px 320px at -6% 30%, rgba(36,84,224,0.05), transparent 60%),
+      linear-gradient(rgba(11,31,58,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(11,31,58,0.035) 1px, transparent 1px);
+    background-size:auto, auto, 56px 56px, 56px 56px;
+    background-position:0 0, 0 0, -1px -1px, -1px -1px;
+    -webkit-mask-image:linear-gradient(to bottom, black 0%, black 94%, transparent 100%);
+    mask-image:linear-gradient(to bottom, black 0%, black 94%, transparent 100%);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:60px;
+    align-items:center;
+  }
+  .hero-copy h1{
+    font-size:clamp(40px,5.6vw,70px);
+    margin-top:26px;
+  }
+  .hero-copy p.lead{
+    font-size:19.5px;
+    color:var(--navy-soft);
+    max-width:520px;
+    margin-top:24px;
+    line-height:1.68;
+  }
+  .hero-actions{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap;}
+  .hero-trust{
+    margin-top:52px;
+    display:flex;align-items:center;gap:14px;
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--navy-faint);
+    letter-spacing:0.03em;
+  }
+  .hero-trust .dots{display:flex;gap:6px;}
+  .hero-trust .dots span{width:7px;height:7px;border-radius:50%;background:var(--border-strong);}
+  .hero-trust .dots span:nth-child(1){background:#8FAE6B;}
+  .hero-trust .dots span:nth-child(2){background:#C99A4A;}
+  .hero-trust .dots span:nth-child(3){background:var(--blue);}
+
+  /* Signature card */
+  .hero-visual{position:relative;}
+  .opp-card-wrap{position:relative;max-width:420px;margin-left:auto;}
+  .opp-card{
+    position:relative;z-index:1;
+    background:#fff;
+    border:1px solid rgba(11,31,58,0.06);
+    border-radius:var(--radius-xl);
+    box-shadow:var(--shadow-lg);
+    padding:30px;
+    transform:perspective(1400px) rotateY(-7deg) rotateX(3deg);
+    transition:transform .5s var(--ease), box-shadow .5s var(--ease);
+    animation:cardIn 1s var(--ease) .15s both;
+  }
+  .opp-card-wrap:hover .opp-card{transform:perspective(1400px) rotateY(-2deg) rotateX(0.5deg) translateY(-4px);box-shadow:0 20px 40px rgba(11,31,58,0.08), 0 48px 100px rgba(11,31,58,0.18);}
+  @keyframes cardIn{from{opacity:0;transform:perspective(1400px) rotateY(-7deg) rotateX(3deg) translateY(24px);}to{opacity:1;transform:perspective(1400px) rotateY(-7deg) rotateX(3deg) translateY(0);}}
+  .opp-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+  .opp-tag{
+    font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.08em;
+    color:var(--blue);background:var(--blue-light);
+    padding:5px 10px;border-radius:var(--radius-full);
+  }
+  .opp-ref{font-family:var(--font-mono);font-size:11.5px;color:var(--navy-faint);}
+  .opp-card h4{font-size:19px;margin-bottom:6px;}
+  .opp-loc{font-size:13.5px;color:var(--navy-soft);margin-bottom:20px;}
+  .opp-score-row{display:flex;align-items:center;gap:16px;padding:16px;background:var(--surface);border-radius:var(--radius-md);margin-bottom:16px;}
+  .score-ring{position:relative;width:58px;height:58px;flex:none;}
+  .score-ring svg{transform:rotate(-90deg);width:58px;height:58px;}
+  .score-ring circle{fill:none;stroke-width:5;}
+  .score-ring .bg{stroke:var(--surface-alt);}
+  .score-ring .fg{stroke:var(--blue);stroke-linecap:round;stroke-dasharray:151;stroke-dashoffset:151;transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1);}
+  .score-ring .val{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:14px;}
+  .opp-score-text .label{font-size:11.5px;color:var(--navy-faint);font-family:var(--font-mono);letter-spacing:.05em;text-transform:uppercase;}
+  .opp-score-text .value{font-family:var(--font-display);font-weight:600;font-size:15.5px;margin-top:2px;}
+  .opp-meta{display:flex;justify-content:space-between;font-size:13px;color:var(--navy-soft);padding-top:14px;border-top:1px solid var(--border);}
+  .opp-meta b{color:var(--navy);font-weight:600;}
+  .status-pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--green);}
+  .status-pill::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);}
+
+  .float-chip{
+    position:absolute;z-index:2;background:#fff;border:1px solid rgba(11,31,58,0.06);
+    border-radius:var(--radius-md);box-shadow:var(--shadow-md);
+    padding:13px 18px;display:flex;align-items:center;gap:10px;
+    font-size:13px;font-weight:600;white-space:nowrap;
+    animation:float 6s ease-in-out infinite, chipIn .8s var(--ease) both;
+  }
+  .float-chip svg{width:16px;height:16px;color:var(--blue);flex:none;}
+  .chip-1{top:-20px;left:-22px;animation-delay:0s, .5s;}
+  .chip-2{bottom:-34px;right:-24px;animation-delay:1.8s, .8s;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+  @keyframes chipIn{from{opacity:0;transform:translateY(14px) scale(.94);}to{opacity:1;transform:translateY(0) scale(1);}}
+
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{margin-top:20px;}
+    .opp-card-wrap{margin:0 auto;}
+    .opp-card{transform:none;}
+    .opp-card-wrap:hover .opp-card{transform:none;}
+    .float-chip{display:none;}
+  }
+
+  /* ---------- HOW IT WORKS (TIMELINE) ---------- */
+  .timeline-track{position:relative;}
+  .timeline-line{
+    position:absolute;top:36px;left:12.5%;right:12.5%;height:2px;
+    background:var(--border);border-radius:2px;overflow:hidden;z-index:0;
+  }
+  .timeline-fill{
+    position:absolute;inset:0 auto 0 0;height:100%;width:0%;
+    background:linear-gradient(90deg,var(--blue),var(--green));
+    transition:width 1.8s var(--ease);
+  }
+  .timeline-track.in .timeline-fill{width:100%;}
+  .timeline-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:28px;
+    position:relative;z-index:1;
+  }
+  .timeline-item{position:relative;}
+  .timeline-badge{
+    position:absolute;top:0;left:50%;transform:translateX(-50%) scale(0.9);
+    width:72px;height:72px;border-radius:50%;
+    background:#fff;border:2px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    z-index:2;opacity:0;
+    transition:border-color .5s var(--ease), background .5s var(--ease), box-shadow .5s var(--ease), transform .6s var(--ease), opacity .6s ease;
+  }
+  .timeline-badge svg{width:26px;height:26px;color:var(--blue);transition:color .5s ease;}
+  .timeline-item.in .timeline-badge{opacity:1;transform:translateX(-50%) scale(1);transition-delay:calc(var(--i,0) * 140ms);}
+  .timeline-track.in .timeline-badge{border-color:var(--blue);background:var(--blue);box-shadow:0 10px 26px rgba(36,84,224,0.3);transition-delay:calc(var(--i,0) * 140ms + .5s);}
+  .timeline-track.in .timeline-badge svg{color:#fff;transition-delay:calc(var(--i,0) * 140ms + .5s);}
+  .timeline-card{
+    margin-top:36px;padding:46px 26px 30px;
+    background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);
+    text-align:center;position:relative;overflow:hidden;
+    transition:transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s ease;
+  }
+  .timeline-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:transparent;}
+  .timeline-num{
+    position:absolute;top:10px;right:18px;
+    font-family:var(--font-display);font-weight:700;font-size:46px;
+    color:var(--surface-alt);letter-spacing:-0.02em;line-height:1;z-index:0;user-select:none;
+  }
+  .timeline-card h3{font-size:18.5px;margin-bottom:10px;position:relative;}
+  .timeline-card p{font-size:14px;color:var(--navy-soft);line-height:1.6;position:relative;margin:0;}
+
+  @media (max-width:980px){
+    .timeline-line{display:none;}
+    .timeline-grid{display:flex;flex-direction:column;gap:0;}
+    .timeline-item{display:flex;gap:20px;align-items:flex-start;padding-bottom:30px;}
+    .timeline-item:last-child{padding-bottom:0;}
+    .timeline-item::after{
+      content:"";position:absolute;left:35px;top:76px;bottom:0;width:2px;
+      background:var(--border);z-index:0;
+    }
+    .timeline-item:last-child::after{display:none;}
+    .timeline-badge{position:static;flex:none;transform:scale(0.9);margin-top:2px;}
+    .timeline-item.in .timeline-badge{transform:scale(1);}
+    .timeline-track.in .timeline-badge{transform:scale(1);}
+    .timeline-card{margin-top:0;padding:24px 22px;text-align:left;flex:1;}
+    .timeline-num{top:12px;right:16px;font-size:34px;}
+  }
+  @media (max-width:560px){
+    .timeline-item{gap:16px;}
+    .timeline-badge{width:60px;height:60px;}
+    .timeline-badge svg{width:22px;height:22px;}
+    .timeline-item::after{left:29px;top:64px;}
+  }
+
+  /* ---------- WHO IT'S FOR ---------- */
+  .audience-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  }
+  .aud-card{
+    background:linear-gradient(160deg,#0E2444,var(--navy) 60%);
+    color:#fff;
+    border-radius:var(--radius-lg);
+    padding:38px 32px;
+    position:relative;
+    overflow:hidden;
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease);
+    box-shadow:0 1px 0 rgba(255,255,255,0.04) inset, var(--shadow-sm);
+  }
+  .aud-card:hover{transform:translateY(-7px);box-shadow:0 1px 0 rgba(255,255,255,0.06) inset, var(--shadow-lg);}
+  .aud-card::after{
+    content:"";position:absolute;right:-50px;top:-50px;width:190px;height:190px;
+    background:radial-gradient(circle,rgba(36,84,224,0.4),transparent 70%);
+    transition:transform .5s var(--ease);
+  }
+  .aud-card:hover::after{transform:scale(1.15);}
+  .aud-icon{
+    width:48px;height:48px;border-radius:13px;background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.08);
+    display:flex;align-items:center;justify-content:center;margin-bottom:26px;
+    position:relative;
+    transition:transform .4s var(--ease), background .4s ease;
+  }
+  .aud-card:hover .aud-icon{transform:translateY(-3px);background:var(--blue);}
+  .aud-icon svg{width:22px;height:22px;color:#fff;position:relative;}
+  .aud-card h3{color:#fff;font-size:21px;margin-bottom:13px;position:relative;}
+  .aud-card p{color:#AEBBD6;font-size:14.5px;line-height:1.7;position:relative;}
+  @media (max-width:900px){ .audience-grid{grid-template-columns:1fr;} }
+
+  /* ---------- EXAMPLE REPORT (DASHBOARD) ---------- */
+  .report-wrap{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:var(--radius-xl);
+    box-shadow:var(--shadow-lg);
+    overflow:hidden;
+    transition:box-shadow .5s var(--ease), transform .5s var(--ease);
+  }
+  .report-wrap:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(11,31,58,0.08), 0 50px 110px rgba(11,31,58,0.16);}
+  .report-banner{
+    background:linear-gradient(120deg,var(--navy),#132a4f);
+    color:#fff;
+    padding:20px 34px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;flex-wrap:wrap;
+  }
+  .report-banner .left{display:flex;align-items:center;gap:12px;}
+  .report-banner .badge{
+    font-family:var(--font-mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;
+    background:rgba(255,255,255,0.14);padding:6px 12px;border-radius:var(--radius-full);
+  }
+  .report-banner p{font-size:13.5px;color:#B9C4DA;}
+  .report-banner .ref{font-family:var(--font-mono);font-size:12px;color:#9FB0CC;letter-spacing:.02em;}
+  .report-body{padding:48px;}
+  @media (min-width:901px){ .report-body{padding:56px;} }
+
+  .k{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy-faint);margin-bottom:8px;display:block;}
+  .v{font-weight:600;font-size:15.5px;display:block;}
+
+  /* Hero row: big score + KPI cards */
+  .dash-hero{
+    display:grid;grid-template-columns:210px 1fr;gap:36px;align-items:center;
+    padding-bottom:34px;margin-bottom:34px;border-bottom:1px solid var(--border);
+  }
+  .dash-project-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy-faint);margin-bottom:8px;}
+  .dash-score{text-align:center;}
+  .dash-score .ring-xl{position:relative;width:176px;height:176px;margin:0 auto;}
+  .dash-score .ring-xl svg{width:176px;height:176px;transform:rotate(-90deg);}
+  .dash-score .ring-xl circle{fill:none;stroke-width:11;}
+  .dash-score .ring-xl .bg{stroke:var(--surface-alt);}
+  .dash-score .ring-xl .fg{stroke:url(#scoreGradient);stroke-linecap:round;stroke-dasharray:477;stroke-dashoffset:477;transition:stroke-dashoffset 1.8s cubic-bezier(.2,.8,.2,1);}
+  .dash-score .ring-xl .val-wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .dash-score .ring-xl .val{font-family:var(--font-display);font-weight:700;font-size:40px;color:var(--navy);letter-spacing:-0.02em;}
+  .dash-score .ring-xl .max{font-family:var(--font-mono);font-size:12px;color:var(--navy-faint);margin-top:-2px;}
+  .dash-score .lbl{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.06em;color:var(--navy-faint);text-transform:uppercase;margin-top:16px;}
+  .dash-score .status-tag{
+    display:inline-flex;align-items:center;gap:6px;margin-top:10px;
+    background:var(--green-light);color:var(--green);font-size:12.5px;font-weight:600;
+    padding:6px 14px;border-radius:var(--radius-full);
+  }
+  .dash-score .status-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);}
+
+  .dash-project-title{margin-bottom:22px;}
+  .dash-project-title h3{font-size:27px;max-width:520px;}
+
+  .dash-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .kpi-card{
+    background:var(--surface);border-radius:var(--radius-md);padding:18px 20px;
+    display:flex;gap:14px;align-items:flex-start;
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease), background .3s ease;
+  }
+  .kpi-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm);background:#fff;}
+  .kpi-icon{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex:none;}
+  .kpi-icon svg{width:18px;height:18px;}
+  .kpi-icon.blue{background:var(--blue-light);color:var(--blue);}
+  .kpi-icon.green{background:var(--green-light);color:var(--green);}
+  .kpi-icon.amber{background:var(--amber-light);color:var(--amber);}
+  .kpi-icon.purple{background:var(--purple-light);color:var(--purple);}
+  .kpi-text .k{margin-bottom:5px;}
+  .kpi-text .v{font-size:14.5px;line-height:1.4;}
+
+  /* Stage tracker */
+  .stage-block{margin-bottom:36px;}
+  .stage-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:8px;}
+  .stage-heading .k{margin-bottom:0;}
+  .stage-heading .v{font-size:14px;color:var(--blue);}
+  .stage-tracker{display:flex;align-items:flex-start;overflow-x:auto;padding-bottom:4px;}
+  .stage-step{display:flex;flex-direction:column;align-items:center;gap:10px;flex:none;min-width:100px;position:relative;}
+  .stage-dot{width:13px;height:13px;border-radius:50%;background:var(--border-strong);box-shadow:0 0 0 4px #fff;transition:background .4s ease, box-shadow .4s ease, transform .4s ease;}
+  .stage-step.done .stage-dot{background:var(--green);}
+  .stage-step.active .stage-dot{background:var(--blue);box-shadow:0 0 0 5px var(--blue-light);width:15px;height:15px;animation:pulseDot 2s ease-in-out infinite;}
+  @keyframes pulseDot{0%,100%{box-shadow:0 0 0 5px var(--blue-light);}50%{box-shadow:0 0 0 8px var(--blue-light);}}
+  .stage-step span{font-size:12.5px;font-weight:600;color:var(--navy-faint);text-align:center;white-space:nowrap;}
+  .stage-step.done span,.stage-step.active span{color:var(--navy);}
+  .stage-line{flex:1;height:2px;background:var(--border);margin:6px 4px 0;min-width:34px;}
+  .stage-line.done{background:var(--green);}
+
+  /* Bento grid of detail cards */
+  .dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .dash-card{
+    background:#fff;border:1px solid var(--border);border-radius:var(--radius-md);
+    padding:28px;
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s ease;
+  }
+  .dash-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm);border-color:transparent;}
+  .dash-card.wide{grid-column:1/-1;}
+  .dash-card.highlight{
+    background:linear-gradient(160deg,var(--blue-light),#fff);
+    border-color:rgba(36,84,224,0.16);
+    display:flex;gap:18px;align-items:flex-start;
+  }
+  .dash-card-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+  .dash-card-icon{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex:none;}
+  .dash-card-icon svg{width:17px;height:17px;}
+  .dash-card-icon.blue{background:var(--blue-light);color:var(--blue);}
+  .dash-card-icon.green{background:var(--green-light);color:var(--green);}
+  .dash-card-icon.amber{background:var(--amber-light);color:var(--amber);}
+  .dash-card-icon.purple{background:var(--purple-light);color:var(--purple);}
+  .dash-card-head h5{font-family:var(--font-display);font-size:15.5px;font-weight:600;color:var(--navy);margin:0;}
+  .dash-card p{color:var(--navy-soft);font-size:14.5px;line-height:1.7;margin:0;}
+  .dash-card .org-name{font-family:var(--font-display);font-weight:600;font-size:17px;color:var(--navy);}
+  .dash-card .role-tag{
+    display:inline-flex;margin-top:9px;background:var(--purple-light);color:var(--purple);
+    font-size:12px;font-weight:600;padding:5px 12px;border-radius:var(--radius-full);
+  }
+  .dash-divider{height:1px;background:var(--border);margin:18px 0;}
+  .dash-card.highlight .dash-card-icon{margin-top:1px;}
+  .dash-card.highlight p{color:var(--navy);font-size:15px;font-weight:500;line-height:1.65;}
+  .dash-card.highlight .highlight-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;display:block;}
+
+  .contact-list li{display:flex;align-items:center;gap:12px;font-size:14.5px;color:var(--navy-soft);padding:8px 0;}
+  .contact-list svg{width:17px;height:17px;color:var(--blue);flex:none;}
+  .contact-note{font-size:12.5px;color:var(--navy-faint);line-height:1.6;margin-top:10px;}
+
+  .confidence-value{font-family:var(--font-display);font-size:30px;font-weight:700;color:var(--navy);}
+  .confidence-bar-track{width:100%;height:9px;border-radius:var(--radius-full);background:var(--surface-alt);overflow:hidden;margin:16px 0 12px;}
+  .confidence-bar-fill{height:100%;border-radius:var(--radius-full);background:linear-gradient(90deg,var(--blue),var(--green));width:0%;transition:width 1.6s cubic-bezier(.2,.8,.2,1);}
+
+  .report-callout{
+    margin-top:36px;
+    background:linear-gradient(120deg,var(--navy),#132a4f);
+    border-radius:var(--radius-md);
+    padding:30px 34px;
+    position:relative;
+    overflow:hidden;
+  }
+  .report-callout::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(360px 200px at 0% 0%, rgba(36,84,224,0.4), transparent 65%);
+  }
+  .report-callout p{
+    position:relative;color:#fff;font-family:var(--font-display);font-weight:500;
+    font-size:18px;line-height:1.55;letter-spacing:-0.01em;margin-bottom:0;max-width:660px;
+  }
+
+  @media (max-width:900px){
+    .dash-hero{grid-template-columns:1fr;text-align:center;}
+    .dash-project-title{text-align:left;}
+    .dash-kpis{grid-template-columns:1fr 1fr;}
+    .report-body{padding:30px;}
+  }
+  @media (max-width:640px){
+    .dash-kpis{grid-template-columns:1fr;}
+    .dash-grid{grid-template-columns:1fr;}
+    .dash-card.wide{grid-column:1;}
+    .dash-card.highlight{flex-direction:column;}
+    .report-banner{padding:16px 22px;}
+    .report-body{padding:22px;}
+    .report-callout{padding:24px;}
+    .report-callout p{font-size:16.5px;}
+  }
+
+  /* ---------- WHY NEXTCONTRACT (FEATURES) ---------- */
+  .feature-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  }
+  .feature-card{
+    background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);
+    padding:38px 30px;
+    transition:transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s ease;
+  }
+  .feature-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:transparent;}
+  .feature-icon{
+    width:56px;height:56px;border-radius:16px;
+    background:linear-gradient(155deg,var(--blue-light),#F5F8FF);
+    border:1px solid rgba(36,84,224,0.12);
+    display:flex;align-items:center;justify-content:center;
+    font-size:24px;line-height:1;
+    margin-bottom:26px;
+    transition:transform .4s var(--ease), background .4s ease;
+  }
+  .feature-card:hover .feature-icon{transform:scale(1.08) rotate(-4deg);background:linear-gradient(155deg,var(--blue),var(--blue-dark));}
+  .feature-card h3{font-size:19.5px;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+  .feature-card p{font-size:14.5px;color:var(--navy-soft);line-height:1.7;}
+  @media (max-width:980px){ .feature-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:600px){ .feature-grid{grid-template-columns:1fr;} }
+
+  /* ---------- WHY DIFFERENT ---------- */
+  .diff-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-md);}
+  .diff-col{padding:52px 44px;}
+  .diff-col.old{background:var(--surface);}
+  .diff-col.new{background:var(--navy);color:#fff;}
+  .diff-col h4{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:24px;}
+  .diff-col.old h4{color:var(--navy-faint);}
+  .diff-col.new h4{color:#8FA8E8;}
+  .diff-row{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid rgba(0,0,0,0.06);}
+  .diff-col.new .diff-row{border-bottom:1px solid rgba(255,255,255,0.09);}
+  .diff-row:last-child{border-bottom:none;}
+  .diff-row svg{width:19px;height:19px;flex:none;margin-top:2px;}
+  .diff-col.old svg{color:#C4536A;}
+  .diff-col.new svg{color:#5FD498;}
+  .diff-row p{font-size:14.5px;line-height:1.55;}
+  .diff-col.old p{color:var(--navy-soft);}
+  .diff-col.new p{color:#D7E0F3;}
+  @media (max-width:820px){ .diff-wrap{grid-template-columns:1fr;} }
+
+  /* ---------- WHY CONTRACTORS CHOOSE ---------- */
+  .choose-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .choose-card{
+    background:#fff;border:1px solid var(--border);border-radius:var(--radius-xl);
+    padding:44px 40px;
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease), border-color .45s ease;
+  }
+  .choose-card:hover{transform:translateY(-7px);box-shadow:var(--shadow-lg);border-color:transparent;}
+  .choose-icon{
+    width:60px;height:60px;border-radius:16px;
+    background:linear-gradient(155deg,var(--blue-light),#F5F8FF);
+    border:1px solid rgba(36,84,224,0.12);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:28px;
+    transition:transform .45s var(--ease), background .45s ease, box-shadow .45s ease;
+  }
+  .choose-card:hover .choose-icon{
+    transform:scale(1.08) rotate(-4deg);
+    background:linear-gradient(155deg,var(--blue),var(--blue-dark));
+    box-shadow:0 12px 24px rgba(36,84,224,0.28);
+  }
+  .choose-icon svg{width:26px;height:26px;color:var(--blue);transition:color .45s ease;}
+  .choose-card:hover .choose-icon svg{color:#fff;}
+  .choose-card h3{font-size:21px;margin-bottom:14px;}
+  .choose-card p{font-size:15px;color:var(--navy-soft);line-height:1.7;}
+
+  .choose-quote{
+    max-width:800px;margin:64px auto 0;text-align:center;position:relative;
+    background:linear-gradient(160deg,var(--blue-light),#fff);
+    border:1px solid rgba(36,84,224,0.14);
+    border-radius:var(--radius-xl);
+    padding:60px 56px;
+    overflow:hidden;
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease);
+  }
+  .choose-quote:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+  .choose-quote .quote-mark{
+    position:absolute;top:6px;left:26px;
+    font-family:var(--font-display);font-size:110px;font-weight:700;line-height:1;
+    color:rgba(36,84,224,0.1);user-select:none;pointer-events:none;
+  }
+  .choose-quote p{
+    position:relative;font-family:var(--font-display);font-weight:600;
+    font-size:clamp(22px,3.2vw,32px);line-height:1.45;color:var(--navy);
+    letter-spacing:-0.015em;
+  }
+
+  @media (max-width:820px){
+    .choose-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:560px){
+    .choose-card{padding:32px 26px;}
+    .choose-quote{padding:44px 28px;}
+    .choose-quote .quote-mark{font-size:80px;top:2px;left:16px;}
+  }
+
+  /* ---------- WHY BUSINESSES USE (STATS) ---------- */
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .stat-card{
+    background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);
+    padding:34px 28px;text-align:left;
+    transition:transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s ease;
+  }
+  .stat-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:transparent;}
+  .stat-icon{
+    width:46px;height:46px;border-radius:13px;
+    background:var(--blue-light);color:var(--blue);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:22px;
+    transition:transform .4s var(--ease), background .4s ease, color .4s ease;
+  }
+  .stat-card:hover .stat-icon{background:var(--blue);color:#fff;transform:scale(1.08);}
+  .stat-icon svg{width:20px;height:20px;}
+  .stat-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy-faint);margin-bottom:10px;}
+  .stat-value{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--font-display);font-weight:700;font-size:23px;color:var(--navy);
+    letter-spacing:-0.01em;margin-bottom:12px;
+  }
+  .stat-value .live-dot{
+    width:8px;height:8px;border-radius:50%;background:var(--green);flex:none;
+    box-shadow:0 0 0 0 rgba(15,157,88,0.5);
+    animation:livePulse 2.2s ease-out infinite;
+  }
+  @keyframes livePulse{
+    0%{box-shadow:0 0 0 0 rgba(15,157,88,0.45);}
+    70%{box-shadow:0 0 0 9px rgba(15,157,88,0);}
+    100%{box-shadow:0 0 0 0 rgba(15,157,88,0);}
+  }
+  .stat-card p{font-size:14px;color:var(--navy-soft);line-height:1.65;margin:0;}
+
+  .stats-statement{
+    max-width:760px;margin:56px auto 0;text-align:center;
+    padding-top:44px;border-top:1px solid var(--border);
+  }
+  .stats-statement p{
+    font-family:var(--font-display);font-weight:600;
+    font-size:clamp(20px,2.6vw,26px);line-height:1.5;color:var(--navy);letter-spacing:-0.01em;
+  }
+
+  @media (max-width:980px){ .stats-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){
+    .stats-grid{grid-template-columns:1fr;}
+    .stat-card{padding:28px 24px;}
+    .stats-statement{padding-top:32px;margin-top:40px;}
+  }
+
+  /* ---------- PRICING (SINGLE PREMIUM CARD) ---------- */
+  .pricing-section{position:relative;overflow:hidden;}
+  .pricing-section::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(640px 420px at 50% 0%, rgba(36,84,224,0.08), transparent 65%),
+      radial-gradient(500px 320px at 85% 100%, rgba(15,157,88,0.06), transparent 60%);
+    pointer-events:none;
+  }
+  .pricing-section .container{position:relative;}
+
+  .pricing-glow{
+    max-width:490px;margin:0 auto;
+    padding:2px;border-radius:calc(var(--radius-xl) + 2px);
+    background:linear-gradient(140deg,var(--blue),#22C58F 55%,var(--blue));
+    box-shadow:0 30px 70px rgba(36,84,224,0.22), 0 10px 28px rgba(15,157,88,0.1);
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease);
+  }
+  .pricing-glow:hover{transform:translateY(-8px);box-shadow:0 40px 90px rgba(36,84,224,0.28), 0 16px 34px rgba(15,157,88,0.14);}
+
+  .pricing-card{
+    position:relative;overflow:hidden;
+    background:#fff;border-radius:var(--radius-xl);
+    padding:46px 42px 40px;
+    text-align:center;
+  }
+  .pricing-card::before{
+    content:"";position:absolute;top:-70px;right:-70px;width:220px;height:220px;
+    background:radial-gradient(circle,rgba(36,84,224,0.1),transparent 70%);
+    pointer-events:none;
+  }
+  .pricing-card::after{
+    content:"";position:absolute;bottom:-70px;left:-70px;width:220px;height:220px;
+    background:radial-gradient(circle,rgba(15,157,88,0.08),transparent 70%);
+    pointer-events:none;
+  }
+
+  .price-badge{
+    position:relative;display:inline-flex;align-items:center;gap:6px;
+    background:var(--blue-light);color:var(--blue);
+    font-size:12.5px;font-weight:600;letter-spacing:.01em;
+    padding:7px 15px 7px 12px;border-radius:var(--radius-full);
+    margin-bottom:22px;
+  }
+  .price-badge svg{width:14px;height:14px;}
+
+  .pricing-card .price-title{
+    position:relative;font-family:var(--font-display);font-weight:600;
+    font-size:21px;color:var(--navy);letter-spacing:-0.01em;margin-bottom:18px;
+  }
+  .pricing-hero-amount{position:relative;display:flex;align-items:flex-start;justify-content:center;gap:2px;}
+  .pricing-hero-amount .currency{font-family:var(--font-display);font-weight:700;font-size:28px;color:var(--navy);margin-top:10px;}
+  .pricing-hero-amount .num{font-family:var(--font-display);font-weight:700;font-size:78px;letter-spacing:-0.035em;color:var(--navy);line-height:1;}
+  .price-per{position:relative;font-size:14.5px;color:var(--navy-faint);margin-top:6px;margin-bottom:34px;}
+
+  .pricing-divider{position:relative;height:1px;background:var(--border);margin-bottom:30px;}
+
+  .benefit-grid{
+    position:relative;display:grid;grid-template-columns:1fr 1fr;gap:2px 22px;
+    text-align:left;margin-bottom:36px;
+  }
+  .benefit-row{display:flex;align-items:flex-start;gap:10px;padding:9px 0;}
+  .benefit-icon{
+    width:20px;height:20px;border-radius:50%;flex:none;margin-top:1px;
+    background:var(--blue-light);color:var(--blue);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .benefit-icon svg{width:11px;height:11px;}
+  .benefit-row span{font-size:14px;color:var(--navy-soft);line-height:1.45;}
+
+  .pricing-card .btn-primary{position:relative;width:100%;padding:17px 26px;font-size:16px;}
+  .pricing-fine{position:relative;font-size:12.5px;color:var(--navy-faint);margin-top:16px;}
+
+  @media (max-width:560px){
+    .pricing-card{padding:36px 26px 32px;}
+    .pricing-hero-amount .num{font-size:64px;}
+    .benefit-grid{grid-template-columns:1fr;gap:0;}
+  }
+
+  /* ---------- RECEIVE (DASHBOARD PREVIEW) ---------- */
+  .receive-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:64px;align-items:center;}
+
+  .device-frame{
+    background:#fff;border:1px solid var(--border);border-radius:var(--radius-xl);
+    box-shadow:var(--shadow-lg);overflow:hidden;
+    transform:perspective(1400px) rotateY(5deg) rotateX(1.5deg);
+    transition:transform .5s var(--ease), box-shadow .5s var(--ease);
+  }
+  .receive-visual:hover .device-frame{transform:perspective(1400px) rotateY(1deg) rotateX(0deg) translateY(-3px);box-shadow:0 20px 40px rgba(11,31,58,0.08), 0 50px 100px rgba(11,31,58,0.18);}
+  .device-topbar{
+    display:flex;align-items:center;gap:16px;
+    padding:14px 18px;background:var(--surface);border-bottom:1px solid var(--border);
+  }
+  .device-dots{display:flex;gap:6px;}
+  .device-dots span{width:9px;height:9px;border-radius:50%;background:var(--border-strong);}
+  .device-dots span:nth-child(1){background:#F0576B;}
+  .device-dots span:nth-child(2){background:#F0B429;}
+  .device-dots span:nth-child(3){background:#22C58F;}
+  .device-title{font-family:var(--font-mono);font-size:11.5px;color:var(--navy-faint);letter-spacing:.02em;}
+
+  .mini-dash{padding:26px 26px 22px;}
+  .mini-head{display:flex;gap:18px;align-items:center;margin-bottom:20px;}
+  .mini-ring{position:relative;width:80px;height:80px;flex:none;}
+  .mini-ring svg{width:80px;height:80px;transform:rotate(-90deg);}
+  .mini-ring circle{fill:none;stroke-width:7;}
+  .mini-ring .bg{stroke:var(--surface-alt);}
+  .mini-ring .fg{stroke:url(#miniScoreGradient);stroke-linecap:round;stroke-dasharray:220;stroke-dashoffset:220;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1);}
+  .mini-ring .val{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:19px;color:var(--navy);}
+  .mini-head-text .k{margin-bottom:4px;}
+  .mini-head-text h4{font-family:var(--font-display);font-size:16.5px;font-weight:600;color:var(--navy);margin-bottom:5px;}
+  .mini-head-text .meta{font-size:12.5px;color:var(--navy-soft);}
+  .stage-chip{
+    display:inline-flex;align-items:center;gap:5px;margin-top:8px;
+    background:var(--blue-light);color:var(--blue);font-size:11px;font-weight:600;
+    padding:4px 10px;border-radius:var(--radius-full);
+  }
+  .stage-chip::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--blue);}
+
+  .mini-row{padding:14px 0;border-top:1px solid var(--border);}
+  .mini-row .k{margin-bottom:8px;}
+  .mini-row .v{font-size:13.5px;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:6px;}
+  .tag-chip{
+    font-size:11.5px;font-weight:500;color:var(--navy-soft);
+    background:var(--surface);border:1px solid var(--border);
+    padding:5px 10px;border-radius:var(--radius-full);
+  }
+  .mini-two{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .mini-org .org-name{font-family:var(--font-display);font-weight:600;font-size:14px;color:var(--navy);}
+  .mini-org .role-tag{
+    display:inline-flex;margin-top:6px;background:var(--purple-light);color:var(--purple);
+    font-size:11px;font-weight:600;padding:4px 10px;border-radius:var(--radius-full);
+  }
+  .mini-contact-icons{display:flex;gap:10px;}
+  .mini-contact-icons span{
+    width:30px;height:30px;border-radius:9px;background:var(--blue-light);color:var(--blue);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .mini-contact-icons svg{width:14px;height:14px;}
+
+  .mini-action{
+    display:flex;gap:12px;align-items:flex-start;
+    background:var(--blue-light);border:1px solid rgba(36,84,224,0.16);
+    border-radius:var(--radius-md);padding:16px 18px;margin-top:14px;
+  }
+  .mini-action svg{width:16px;height:16px;color:var(--blue);flex:none;margin-top:2px;}
+  .mini-action p{font-size:13px;color:var(--navy);font-weight:500;line-height:1.55;margin:0;}
+
+  .mini-footer{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:16px;margin-top:16px;border-top:1px solid var(--border);
+    flex-wrap:wrap;gap:10px;
+  }
+  .mini-source{font-size:11.5px;color:var(--navy-faint);}
+  .mini-confidence{display:flex;align-items:center;gap:8px;}
+  .mini-confidence .k{margin:0;}
+  .mini-bar-track{width:64px;height:6px;border-radius:var(--radius-full);background:var(--surface-alt);overflow:hidden;}
+  .mini-bar-fill{height:100%;width:0%;border-radius:var(--radius-full);background:linear-gradient(90deg,var(--blue),var(--green));transition:width 1.4s var(--ease);}
+  .mini-confidence-val{font-family:var(--font-display);font-weight:700;font-size:13px;color:var(--navy);}
+
+  .receive-visual .btn-primary{margin-top:24px;width:100%;}
+
+  .receive-features{display:flex;flex-direction:column;gap:14px;}
+  .receive-feature-card{
+    display:flex;gap:16px;align-items:flex-start;
+    background:#fff;border:1px solid var(--border);border-radius:var(--radius-md);
+    padding:20px 22px;
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s ease;
+  }
+  .receive-feature-card:hover{transform:translateX(6px);box-shadow:var(--shadow-sm);border-color:transparent;}
+  .receive-feature-icon{
+    width:40px;height:40px;border-radius:11px;flex:none;
+    background:var(--blue-light);color:var(--blue);
+    display:flex;align-items:center;justify-content:center;
+    transition:transform .35s var(--ease), background .35s ease, color .35s ease;
+  }
+  .receive-feature-card:hover .receive-feature-icon{background:var(--blue);color:#fff;transform:scale(1.08);}
+  .receive-feature-icon svg{width:18px;height:18px;}
+  .receive-feature-text h4{font-family:var(--font-display);font-size:15.5px;font-weight:600;color:var(--navy);margin-bottom:4px;}
+  .receive-feature-text p{font-size:13.5px;color:var(--navy-soft);line-height:1.55;margin:0;}
+
+  @media (max-width:980px){
+    .receive-grid{grid-template-columns:1fr;gap:48px;}
+    .device-frame{transform:none;}
+    .receive-visual:hover .device-frame{transform:none;}
+  }
+  @media (max-width:560px){
+    .mini-two{grid-template-columns:1fr;}
+    .mini-dash{padding:22px 20px 18px;}
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:800px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--border);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    padding:28px 6px;font-family:var(--font-display);font-size:18.5px;font-weight:600;color:var(--navy);
+    transition:color .25s ease, padding-left .25s ease;
+  }
+  .faq-q:hover{padding-left:10px;}
+  .faq-q .plus{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border-strong);flex:none;position:relative;transition:transform .35s var(--ease), border-color .3s ease, background .3s ease;}
+  .faq-q .plus::before,.faq-q .plus::after{content:"";position:absolute;background:var(--navy);top:50%;left:50%;transition:transform .3s ease;}
+  .faq-q .plus::before{width:10px;height:1.5px;transform:translate(-50%,-50%);}
+  .faq-q .plus::after{width:1.5px;height:10px;transform:translate(-50%,-50%);}
+  .faq-item.open .faq-q .plus{transform:rotate(135deg);border-color:var(--blue);background:var(--blue-light);}
+  .faq-item.open .faq-q .plus::before,.faq-item.open .faq-q .plus::after{background:var(--blue);}
+  .faq-item.open .faq-q{color:var(--blue);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease);}
+  .faq-a-inner{padding:0 40px 30px 6px;font-size:15.5px;color:var(--navy-soft);line-height:1.75;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  .contact-info h3{font-size:26px;margin-bottom:14px;}
+  .contact-info p.lead{color:var(--navy-soft);font-size:15.5px;line-height:1.7;margin-bottom:32px;}
+  .contact-item{display:flex;gap:16px;margin-bottom:26px;transition:transform .3s var(--ease);}
+  .contact-item:hover{transform:translateX(4px);}
+  .contact-item .ic{width:44px;height:44px;border-radius:12px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;flex:none;transition:background .3s ease, transform .3s ease;}
+  .contact-item:hover .ic{background:var(--blue);transform:scale(1.05);}
+  .contact-item:hover .ic svg{color:#fff;}
+  .contact-item .ic svg{width:19px;height:19px;color:var(--blue);transition:color .3s ease;}
+  .contact-item .k{font-size:12.5px;color:var(--navy-faint);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;}
+  .contact-item .v{font-weight:600;font-size:15px;}
+
+  .form-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);padding:40px;box-shadow:var(--shadow-sm);}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .field{margin-bottom:18px;}
+  .field label{display:block;font-size:13px;font-weight:600;margin-bottom:8px;color:var(--navy);}
+  .field input,.field select,.field textarea{
+    width:100%;padding:14px 16px;border-radius:var(--radius-sm);
+    border:1.5px solid var(--border-strong);background:#fff;
+    font-family:var(--font-body);font-size:14.5px;color:var(--navy);
+    transition:border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+  }
+  .field input:hover,.field select:hover,.field textarea:hover{border-color:var(--navy-faint);}
+  .field input:focus,.field select:focus,.field textarea:focus{
+    outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(36,84,224,0.12);
+  }
+  .field textarea{resize:vertical;min-height:100px;}
+  .form-msg{margin-top:14px;font-size:13.5px;color:var(--green);display:none;}
+  .form-msg.show{display:block;}
+  @media (max-width:900px){ .contact-grid{grid-template-columns:1fr;gap:40px;} .form-row{grid-template-columns:1fr;} }
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band{
+    background:linear-gradient(120deg,var(--navy),#132a4f);
+    border-radius:var(--radius-xl);
+    padding:80px 50px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(11,31,58,0.28);
+  }
+  .cta-band::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(560px 300px at 20% 0%, rgba(36,84,224,0.4), transparent 60%);
+  }
+  .cta-band::after{
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size:48px 48px;
+    -webkit-mask-image:radial-gradient(600px 400px at 50% 0%, black, transparent 75%);
+    mask-image:radial-gradient(600px 400px at 50% 0%, black, transparent 75%);
+  }
+  .cta-band h2{color:#fff;font-size:clamp(28px,3.8vw,42px);position:relative;}
+  .cta-band p{color:#B9C4DA;font-size:16.5px;margin-top:16px;position:relative;max-width:480px;margin-left:auto;margin-right:auto;}
+  .cta-band .btn{margin-top:34px;position:relative;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy);color:#B9C4DA;padding:70px 0 26px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,0.1);}
+  .footer-brand .logo{color:#fff;}
+  .footer-brand p{font-size:14px;color:#8FA0BE;margin-top:16px;max-width:280px;line-height:1.6;}
+  .footer-col h5{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#7C8CAE;margin-bottom:18px;}
+  .footer-col a{display:block;font-size:14.5px;color:#C7D1E6;padding:7px 0;transition:color .15s ease;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;flex-wrap:wrap;gap:14px;}
+  .footer-bottom p{font-size:13px;color:#7C8CAE;}
+  .footer-legal{display:flex;gap:22px;}
+  .footer-legal a{font-size:13px;color:#7C8CAE;}
+  .footer-legal a:hover{color:#fff;}
+  @media (max-width:820px){ .footer-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .footer-grid{grid-template-columns:1fr;} .footer-bottom{flex-direction:column;align-items:flex-start;} }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header id="siteHeader">
+  <div class="nav">
+    <a href="#top" class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 16L10 6L14 13L20 4" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      NextContract
+    </a>
+    <nav class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#who">Who it's for</a>
+      <a href="#report">Example report</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-secondary btn-sm">Book a demo</a>
+      <a href="#pricing" class="btn btn-primary btn-sm">Start Free Trial</a>
+    </div>
+    <button class="hamburger" id="menuOpen" aria-label="Open menu"><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-top">
+    <a href="#top" class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 16L10 6L14 13L20 4" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      NextContract
+    </a>
+    <button class="close-btn" id="menuClose" aria-label="Close menu"></button>
+  </div>
+  <a href="#how">How it works</a>
+  <a href="#who">Who it's for</a>
+  <a href="#report">Example report</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contact">Contact</a>
+  <a href="#pricing" class="btn btn-primary btn-block">Start Free Trial</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div class="hero-copy reveal">
+      <span class="eyebrow">AI-powered opportunity finder</span>
+      <h1>Find Your Next Contract Before Your Competitors Do.</h1>
+      <p class="lead">NextContract finds and filters new commercial projects that match your business, then tells you who to call and what to say.</p>
+      <div class="hero-actions">
+        <a href="#pricing" class="btn btn-primary">Start Free Trial</a>
+        <a href="#report" class="btn btn-secondary">See Example Report</a>
+      </div>
+      <div class="hero-trust">
+        <span class="dots"><span></span><span></span><span></span></span>
+        Built for small UK contractors. No endless searching. No irrelevant lead lists.
+      </div>
+    </div>
+
+    <div class="hero-visual reveal">
+      <div class="opp-card-wrap" id="oppCardWrap">
+        <div class="float-chip chip-1">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          New match found
+        </div>
+        <div class="float-chip chip-2">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 8v5l3 3" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.2"/></svg>
+          Closing in 12 days
+        </div>
+        <div class="opp-card" id="heroCard">
+          <div class="opp-card-top">
+            <span class="opp-tag">Example</span>
+            <span class="opp-ref">REF: NC-2026-0417</span>
+          </div>
+          <h4>Grounds Maintenance Contract — Riverside Business Park</h4>
+          <p class="opp-loc">Reading, Berkshire · Private commercial landlord</p>
+          <div class="opp-score-row">
+            <div class="score-ring">
+              <svg viewBox="0 0 58 58"><circle class="bg" cx="29" cy="29" r="24"/><circle class="fg" cx="29" cy="29" r="24" id="ringHero"/></svg>
+              <span class="val">92%</span>
+            </div>
+            <div class="opp-score-text">
+              <div class="label">Match score</div>
+              <div class="value">Strong fit for your trade</div>
+            </div>
+          </div>
+          <div class="opp-meta">
+            <span>Est. value <b>£45k–£65k</b></span>
+            <span class="status-pill">Open</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE PROBLEM ============ -->
+<section class="section-pad problem-section">
+  <div class="container">
+    <div class="problem-head reveal">
+      <span class="eyebrow">The problem</span>
+      <h2>Finding commercial work shouldn't be a full-time job.</h2>
+    </div>
+
+    <div class="problem-grid reveal-stagger">
+      <div class="problem-card reveal" style="--i:0">
+        <div class="problem-icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Hours Wasted</h3>
+        <p>Most contractors spend hours searching planning portals and websites.</p>
+      </div>
+
+      <div class="problem-card reveal" style="--i:1">
+        <div class="problem-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 13h2.5L8 6l3 15 3-11 2 5h4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Too Much Noise</h3>
+        <p>Thousands of projects are published but only a small percentage are relevant.</p>
+      </div>
+
+      <div class="problem-card reveal" style="--i:2">
+        <div class="problem-icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c0-3.5 3.6-6 8-6M17 13.5c1.8.3 3 1.1 3 2v1M17 17v.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Wrong Contacts</h3>
+        <p>Even when you find a project, knowing who to approach is often the hardest part.</p>
+      </div>
+
+      <div class="problem-card reveal" style="--i:3">
+        <div class="problem-icon">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4M9.5 14l4.5 4.5M14 14l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Missed Opportunities</h3>
+        <p>By the time many contractors discover a project, the work has already been allocated.</p>
+      </div>
+    </div>
+
+    <div class="problem-footer reveal">
+      <p><span>NextContract</span> changes that.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section-pad" id="how">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>Four steps. Fully automated.</h2>
+    </div>
+
+    <div class="timeline-track reveal">
+      <div class="timeline-line"><div class="timeline-fill"></div></div>
+      <div class="timeline-grid reveal-stagger">
+        <div class="timeline-item reveal" style="--i:0">
+          <div class="timeline-badge">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <div class="timeline-card">
+            <span class="timeline-num">01</span>
+            <h3>AI Finds Opportunities</h3>
+            <p>Every day, we search planning applications, tenders and new commercial developments.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal" style="--i:1">
+          <div class="timeline-badge">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16l-6 8v5l-4 2v-7L4 5z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="timeline-card">
+            <span class="timeline-num">02</span>
+            <h3>AI Filters Everything</h3>
+            <p>We remove anything irrelevant and rank what's left by how well it fits your business, area and job size.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal" style="--i:2">
+          <div class="timeline-badge">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.6 10.8c.5.4.8 1 .8 1.7v.5h5.6v-.5c0-.7.3-1.3.8-1.7A6 6 0 0012 3z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="timeline-card">
+            <span class="timeline-num">03</span>
+            <h3>You Receive Actionable Intelligence</h3>
+            <p>We explain why it matters, who's likely responsible, and what to do next.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal" style="--i:3">
+          <div class="timeline-badge">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 01-10 0V4zM7 5H4v2a3 3 0 003 3M17 5h3v2a3 3 0 01-3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="timeline-card">
+            <span class="timeline-num">04</span>
+            <h3>Win More Work</h3>
+            <p>Spend less time searching, more time quoting and growing your business.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHO IT'S FOR ============ -->
+<section class="section-pad alt" id="who">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Who it's for</span>
+      <h2>Built for your trade</h2>
+      <p>We know landscaping, fencing and grounds maintenance work — not just tenders in general.</p>
+    </div>
+    <div class="audience-grid reveal-stagger">
+      <div class="aud-card reveal" style="--i:0">
+        <div class="aud-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v6M12 21v-6M5 12H3M21 12h-2M7 7l-1.5-1.5M18.5 18.5L17 17M7 17l-1.5 1.5M18.5 5.5L17 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+        <h3>Commercial landscapers</h3>
+        <p>Landscaping work on business parks, new developments and public spaces.</p>
+      </div>
+      <div class="aud-card reveal" style="--i:1">
+        <div class="aud-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 21V9l7-6 7 6v12M9 21v-6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Fencing contractors</h3>
+        <p>Fencing work on new developments, industrial sites and estate upgrades.</p>
+      </div>
+      <div class="aud-card reveal" style="--i:2">
+        <div class="aud-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 20h16M6 20V10l6-5 6 5v10M10 20v-5h4v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Grounds maintenance companies</h3>
+        <p>Ongoing maintenance contracts across commercial and mixed-use sites.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXAMPLE REPORT ============ -->
+<section class="section-pad" id="report">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Example opportunity report</span>
+      <h2>Example Opportunity Report</h2>
+      <p>Example only. Created to demonstrate the type of information NextContract provides.</p>
+    </div>
+
+    <div class="report-wrap reveal">
+      <div class="report-banner">
+        <div class="left">
+          <span class="badge">Example</span>
+        </div>
+        <p class="ref">REF: EXAMPLE/2026/001</p>
+      </div>
+
+      <div class="report-body">
+
+        <div class="dash-hero">
+          <div class="dash-score">
+            <div class="ring-xl">
+              <svg viewBox="0 0 176 176">
+                <defs>
+                  <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#2454E0"/>
+                    <stop offset="100%" stop-color="#0F9D58"/>
+                  </linearGradient>
+                </defs>
+                <circle class="bg" cx="88" cy="88" r="76"/>
+                <circle class="fg" cx="88" cy="88" r="76" id="ringOpportunity"/>
+              </svg>
+              <div class="val-wrap">
+                <span class="val">94</span>
+                <span class="max">/ 100</span>
+              </div>
+            </div>
+            <div class="lbl">Opportunity score</div>
+            <span class="status-tag">Strong match</span>
+          </div>
+
+          <div>
+            <div class="dash-project-title">
+              <p class="dash-project-label">Project</p>
+              <h3>New Commercial Business Park</h3>
+            </div>
+            <div class="dash-kpis">
+              <div class="kpi-card">
+                <div class="kpi-icon blue">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.1 7-11.5A7 7 0 105 9.5C5 14.9 12 21 12 21z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg>
+                </div>
+                <div class="kpi-text"><div class="k">Location</div><div class="v">Norwich, Norfolk</div></div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-icon amber">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l3 8 4-16 3 8h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="kpi-text"><div class="k">Distance</div><div class="v">22 miles away</div></div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-icon green">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="kpi-text"><div class="k">Estimated package</div><div class="v">£45,000–£65,000 / yr</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage-block">
+          <div class="stage-heading">
+            <span class="k">Current stage</span>
+            <span class="v">Planning approved</span>
+          </div>
+          <div class="stage-tracker">
+            <div class="stage-step done">
+              <div class="stage-dot"></div>
+              <span>Planning submitted</span>
+            </div>
+            <div class="stage-line done"></div>
+            <div class="stage-step active">
+              <div class="stage-dot"></div>
+              <span>Planning approved</span>
+            </div>
+            <div class="stage-line"></div>
+            <div class="stage-step">
+              <div class="stage-dot"></div>
+              <span>Tender stage</span>
+            </div>
+            <div class="stage-line"></div>
+            <div class="stage-step">
+              <div class="stage-dot"></div>
+              <span>Contract awarded</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-grid">
+          <div class="dash-card wide">
+            <div class="dash-card-head">
+              <div class="dash-card-icon blue">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.6 10.8c.5.4.8 1 .8 1.7v.5h5.6v-.5c0-.7.3-1.3.8-1.7A6 6 0 0012 3z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <h5>Why this matches your business</h5>
+            </div>
+            <p>This site will likely need landscaping, fencing and ongoing maintenance.</p>
+          </div>
+
+          <div class="dash-card">
+            <div class="dash-card-head">
+              <div class="dash-card-icon purple">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 21h16M6 21V9l6-5 6 5v12M10 21v-5h4v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <h5>Who to approach</h5>
+            </div>
+            <div class="k">Recommended organisation</div>
+            <div class="org-name">ABC Construction Ltd</div>
+            <span class="role-tag">Main contractor</span>
+            <div class="dash-divider"></div>
+            <div class="k">Best contact role</div>
+            <div class="v">Quantity Surveyor or Procurement Manager</div>
+          </div>
+
+          <div class="dash-card">
+            <div class="dash-card-head">
+              <div class="dash-card-icon green">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.4-1.4a2 2 0 012.1-.4c.9.3 1.8.5 2.7.6a2 2 0 011.8 2.1z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <h5>Public contact details</h5>
+            </div>
+            <ul class="contact-list">
+              <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18" stroke="currentColor" stroke-width="1.7"/></svg>Company website</li>
+              <li><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.4-1.4a2 2 0 012.1-.4c.9.3 1.8.5 2.7.6a2 2 0 011.8 2.1z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Main office telephone</li>
+              <li><svg viewBox="0 0 24 24" fill="none"><path d="M3 7l9 6 9-6M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>General enquiries email</li>
+            </ul>
+            <p class="contact-note">Specific names are only shown when publicly available.</p>
+          </div>
+
+          <div class="dash-card highlight wide">
+            <div class="dash-card-icon blue">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.4-1.4a2 2 0 012.1-.4c.9.3 1.8.5 2.7.6a2 2 0 011.8 2.1z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <span class="highlight-label">Suggested first action</span>
+              <p>Call the contractor and ask if the landscaping work has been given out yet.</p>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <div class="dash-card-head">
+              <div class="dash-card-icon amber">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 21h16M6 21V9l6-5 6 5v12M10 21v-5h4v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <h5>Original source</h5>
+            </div>
+            <div class="v">Planning Portal</div>
+            <div class="k" style="margin-top:8px;">Application reference: EXAMPLE/2026/001</div>
+          </div>
+
+          <div class="dash-card">
+            <div class="dash-card-head">
+              <div class="dash-card-icon green">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <h5>Confidence rating</h5>
+            </div>
+            <span class="confidence-value">91%</span>
+            <div class="confidence-bar-track"><div class="confidence-bar-fill" id="confidenceBar"></div></div>
+            <p>How sure we are that this information is accurate and current.</p>
+          </div>
+        </div>
+
+        <div class="report-callout">
+          <p>We research, filter and rank every opportunity — so you know where to focus.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY NEXTCONTRACT (FEATURES) ============ -->
+<section class="section-pad alt">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Why NextContract</span>
+      <h2>Why NextContract?</h2>
+      <p>Four ways we turn hours of searching into a steady flow of relevant work.</p>
+    </div>
+
+    <div class="feature-grid reveal-stagger">
+      <div class="feature-card reveal" style="--i:0">
+        <div class="feature-icon">🔍</div>
+        <h3>We Research</h3>
+        <p>We search planning records, tenders and new developments for you.</p>
+      </div>
+      <div class="feature-card reveal" style="--i:1">
+        <div class="feature-icon">🎯</div>
+        <h3>We Filter</h3>
+        <p>We pick out only the opportunities that fit your trade, area and size of job.</p>
+      </div>
+      <div class="feature-card reveal" style="--i:2">
+        <div class="feature-icon">📞</div>
+        <h3>We Show You The Next Step</h3>
+        <p>We tell you who's likely responsible, who to contact, and what to do next. We include public contact details when we can.</p>
+      </div>
+      <div class="feature-card reveal" style="--i:3">
+        <div class="feature-icon">📈</div>
+        <h3>We Help Build Your Pipeline</h3>
+        <p>Get a steady flow of new opportunities, so you're never left waiting for work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY DIFFERENT ============ -->
+<section class="section-pad">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why NextContract is different</span>
+      <h2>Less searching. More qualified opportunities.</h2>
+      <p>Generic tender alerts dump everything on you. We sort it first.</p>
+    </div>
+
+    <div class="diff-wrap reveal">
+      <div class="diff-col old">
+        <h4>The old way</h4>
+        <div class="diff-row">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <p>Hours spent checking tender sites every week</p>
+        </div>
+        <div class="diff-row">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <p>An inbox full of alerts that don't match your business</p>
+        </div>
+        <div class="diff-row">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <p>No way to tell what's actually worth chasing</p>
+        </div>
+        <div class="diff-row">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <p>Hearing about a project after competitors already have</p>
+        </div>
+      </div>
+      <div class="diff-col new">
+        <h4>With NextContract</h4>
+        <div class="diff-row">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p>We search every day, automatically</p>
+        </div>
+        <div class="diff-row">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p>Only opportunities that fit your trade and area</p>
+        </div>
+        <div class="diff-row">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p>A clear score, so you know what's worth your time</p>
+        </div>
+        <div class="diff-row">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p>We tell you who to call and what to say</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY CONTRACTORS CHOOSE ============ -->
+<section class="section-pad">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Why contractors choose us</span>
+      <h2>Why Contractors Choose NextContract</h2>
+    </div>
+
+    <div class="choose-grid reveal-stagger">
+      <div class="choose-card reveal" style="--i:0">
+        <div class="choose-icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Hours Saved</h3>
+        <p>Stop spending evenings searching planning portals, council websites and tender notices.</p>
+      </div>
+
+      <div class="choose-card reveal" style="--i:1">
+        <div class="choose-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 3h12l4 6-10 12L2 9l4-6z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 9h20M9 3l3 6 3-6M8.5 9L12 21l3.5-12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Higher Quality Opportunities</h3>
+        <p>Every opportunity is filtered and prioritised so you spend more time quoting and less time searching.</p>
+      </div>
+
+      <div class="choose-card reveal" style="--i:2">
+        <div class="choose-icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Know Who To Contact</h3>
+        <p>Where possible we identify the best organisation or contact role and suggest the best next action. We include public contact information where available.</p>
+      </div>
+
+      <div class="choose-card reveal" style="--i:3">
+        <div class="choose-icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="3.2" stroke="currentColor" stroke-width="1.8"/><circle cx="16.5" cy="11" r="2.6" stroke="currentColor" stroke-width="1.8"/><path d="M3.2 19c.5-3.2 3-5.3 5.8-5.3s5.3 2.1 5.8 5.3M14.8 19c.3-2.1 1.9-3.6 3.7-3.9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Built For Small Contractors</h3>
+        <p>Designed specifically for small and growing businesses that don't have a dedicated sales team.</p>
+      </div>
+    </div>
+
+    <div class="choose-quote reveal">
+      <span class="quote-mark">&ldquo;</span>
+      <p>Your next contract shouldn't depend on luck. It should depend on better information.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY BUSINESSES USE (STATS) ============ -->
+<section class="section-pad alt">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Why businesses use NextContract</span>
+      <h2>Why Businesses Use NextContract</h2>
+    </div>
+
+    <div class="stats-grid reveal-stagger">
+      <div class="stat-card reveal" style="--i:0">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 3v18M15 3v18M3 9h18M3 15h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="stat-label">Projects Analysed</div>
+        <div class="stat-value"><span class="live-dot"></span>Updated Daily</div>
+        <p>Our system continuously reviews new commercial projects as they appear.</p>
+      </div>
+
+      <div class="stat-card reveal" style="--i:1">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="6" rx="8" ry="3" stroke="currentColor" stroke-width="1.8"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="stat-label">Public Data Sources</div>
+        <div class="stat-value" style="font-size:17px;">Planning &amp; Tender Records</div>
+        <p>Planning portals, councils, tenders and commercial developments.</p>
+      </div>
+
+      <div class="stat-card reveal" style="--i:2">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="stat-label">Time Saved</div>
+        <div class="stat-value" style="font-size:17px;">Hours Back Each Week</div>
+        <p>Designed to save contractors hours of research every week.</p>
+      </div>
+
+      <div class="stat-card reveal" style="--i:3">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="stat-label">Focused On Action</div>
+        <div class="stat-value" style="font-size:17px;">Next Step Included</div>
+        <p>Every opportunity includes recommended next steps and public contact information where available.</p>
+      </div>
+    </div>
+
+    <div class="stats-statement reveal">
+      <p>NextContract is built to help small contractors spend less time searching and more time winning work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="section-pad pricing-section" id="pricing">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Pricing</span>
+      <h2>One plan. Everything included.</h2>
+      <p>Includes a 14-day free trial. This covers access to our research and ranking tool — it doesn't guarantee you'll win any contract.</p>
+    </div>
+
+    <div class="pricing-glow reveal">
+      <div class="pricing-card">
+        <span class="price-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.7 6.6 7.1.5-5.5 4.5 1.9 6.9L12 16.9 5.8 20.5l1.9-6.9-5.5-4.5 7.1-.5L12 2z"/></svg>
+          Most Popular
+        </span>
+
+        <div class="price-title">Starter</div>
+        <div class="pricing-hero-amount">
+          <span class="currency">£</span><span class="num">29</span>
+        </div>
+        <div class="price-per">per month</div>
+
+        <div class="pricing-divider"></div>
+
+        <div class="benefit-grid">
+          <div class="benefit-row"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Daily AI opportunity reports</span></div>
+          <div class="benefit-row"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Opportunities matched to your business</span></div>
+          <div class="benefit-row"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>AI explains why each opportunity matters</span></div>
+          <div class="benefit-row"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Recommended organisation to approach</span></div>
+          <div class="benefit-row"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Best contact role</span></div>
+          <div class="benefit-row"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Public contact information where available</span></div>
+          <div class="benefit-row"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Suggested first action</span></div>
+          <div class="benefit-row"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Opportunity score</span></div>
+          <div class="benefit-row"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Confidence rating</span></div>
+          <div class="benefit-row"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Email support</span></div>
+          <div class="benefit-row"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Cancel anytime</span></div>
+        </div>
+
+        <a href="#contact" class="btn btn-primary">Start Free Trial</a>
+        <p class="pricing-fine">No contracts. Cancel anytime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECEIVE (DASHBOARD PREVIEW) ============ -->
+<section class="section-pad alt">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">See exactly what you'll receive</span>
+      <h2>This Is What Arrives In Your Inbox</h2>
+      <p>We research, filter and rank every report before it reaches you.</p>
+    </div>
+
+    <div class="receive-grid">
+      <div class="receive-visual reveal">
+        <div class="device-frame" id="receiveDeviceFrame">
+          <div class="device-topbar">
+            <div class="device-dots"><span></span><span></span><span></span></div>
+            <span class="device-title">NextContract — Daily Report</span>
+          </div>
+
+          <div class="mini-dash">
+            <div class="mini-head">
+              <div class="mini-ring">
+                <svg viewBox="0 0 80 80">
+                  <defs>
+                    <linearGradient id="miniScoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#2454E0"/>
+                      <stop offset="100%" stop-color="#0F9D58"/>
+                    </linearGradient>
+                  </defs>
+                  <circle class="bg" cx="40" cy="40" r="35"/>
+                  <circle class="fg" cx="40" cy="40" r="35" id="ringReceive"/>
+                </svg>
+                <span class="val">94</span>
+              </div>
+              <div class="mini-head-text">
+                <div class="k">Opportunity score · Project</div>
+                <h4>New Commercial Business Park</h4>
+                <div class="meta">Norwich, Norfolk · 22 miles away</div>
+                <span class="stage-chip">Planning approved</span>
+              </div>
+            </div>
+
+            <div class="mini-row">
+              <div class="k">Estimated external works package</div>
+              <div class="v">£45,000–£65,000 / yr</div>
+            </div>
+
+            <div class="mini-row">
+              <div class="k">Likely services required</div>
+              <div class="tag-row">
+                <span class="tag-chip">Soft landscaping</span>
+                <span class="tag-chip">Fencing</span>
+                <span class="tag-chip">Grounds maintenance</span>
+              </div>
+            </div>
+
+            <div class="mini-row">
+              <div class="k">Why this opportunity matches</div>
+              <div class="v">Likely to need external landscaping and long-term maintenance.</div>
+            </div>
+
+            <div class="mini-row mini-two">
+              <div class="mini-org">
+                <div class="k">Recommended organisation</div>
+                <div class="org-name">ABC Construction Ltd</div>
+                <span class="role-tag">Main contractor</span>
+              </div>
+              <div>
+                <div class="k">Best contact role</div>
+                <div class="v">Quantity Surveyor / Procurement</div>
+                <div class="k" style="margin-top:14px;">Public contact info</div>
+                <div class="mini-contact-icons">
+                  <span><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18" stroke="currentColor" stroke-width="1.7"/></svg></span>
+                  <span><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.4-1.4a2 2 0 012.1-.4c.9.3 1.8.5 2.7.6a2 2 0 011.8 2.1z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span><svg viewBox="0 0 24 24" fill="none"><path d="M3 7l9 6 9-6M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mini-action">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.4-1.4a2 2 0 012.1-.4c.9.3 1.8.5 2.7.6a2 2 0 011.8 2.1z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <p>Suggested first action: call the contractor and ask whether the landscaping package has been allocated.</p>
+            </div>
+
+            <div class="mini-footer">
+              <span class="mini-source">Source: Planning Portal · EXAMPLE/2026/001</span>
+              <div class="mini-confidence">
+                <span class="k" style="margin:0;">Confidence</span>
+                <div class="mini-bar-track"><div class="mini-bar-fill" id="miniConfidenceBar"></div></div>
+                <span class="mini-confidence-val">91%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#report" class="btn btn-primary">View Full Example Report</a>
+      </div>
+
+      <div class="receive-copy">
+        <div class="receive-features reveal-stagger">
+          <div class="receive-feature-card reveal" style="--i:0">
+            <div class="receive-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="receive-feature-text">
+              <h4>AI finds the opportunity</h4>
+              <p>We scan planning records and tenders every day, often before contractors hear about them.</p>
+            </div>
+          </div>
+
+          <div class="receive-feature-card reveal" style="--i:1">
+            <div class="receive-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16l-6 8v5l-4 2v-7L4 5z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="receive-feature-text">
+              <h4>AI filters irrelevant projects</h4>
+              <p>Only opportunities that fit your trade, area and job size get through.</p>
+            </div>
+          </div>
+
+          <div class="receive-feature-card reveal" style="--i:2">
+            <div class="receive-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 21h16M6 21V9l6-5 6 5v12M10 21v-5h4v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="receive-feature-text">
+              <h4>AI identifies the most relevant organisation or contact role</h4>
+              <p>So you know who's likely responsible for the work.</p>
+            </div>
+          </div>
+
+          <div class="receive-feature-card reveal" style="--i:3">
+            <div class="receive-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.4-1.4a2 2 0 012.1-.4c.9.3 1.8.5 2.7.6a2 2 0 011.8 2.1z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="receive-feature-text">
+              <h4>AI recommends the best next action</h4>
+              <p>One clear next step, not just a link.</p>
+            </div>
+          </div>
+
+          <div class="receive-feature-card reveal" style="--i:4">
+            <div class="receive-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="receive-feature-text">
+              <h4>You save hours of research</h4>
+              <p>More time for quoting and doing the work.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section-pad" id="faq">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Frequently asked questions</span>
+      <h2>Good to know</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q"><span>What does NextContract actually do?</span><span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">We research commercial tenders and projects that fit your trade, filter out anything that doesn't match your business, and rank what's left — so you spend your time on the opportunities most worth chasing.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Where do the opportunities come from?</span><span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">We search public tender portals, council listings, planning applications and new commercial developments, then turn what we find into a short, easy-to-read report.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Do you guarantee I'll win contracts?</span><span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">No. NextContract helps you find and prioritise opportunities earlier. We don't guarantee any opportunity is available or accurate, or that you'll win any contract.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Which trades do you currently support?</span><span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Commercial landscapers, fencing contractors and grounds maintenance companies. Each account is set up for the type of work and language typical of that trade.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>How is a match score worked out?</span><span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">We score each opportunity against your trade, region, typical job size and capacity, plus signals like the client's past buying history — to show how strong a fit it is.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Can I change or cancel my plan at any time?</span><span class="plus"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. You can upgrade, downgrade or cancel at any time from your account settings. There's no long-term commitment.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="section-pad">
+  <div class="container">
+    <div class="cta-band reveal">
+      <h2>Stop searching. Start receiving.</h2>
+      <p>Start your free trial and get your first opportunities within days.</p>
+      <a href="#contact" class="btn btn-primary">Start Free Trial</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section-pad alt" id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Contact</span>
+      <h2>Talk to the team</h2>
+      <p>Questions about how NextContract works for your trade? Send us a message.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>We're happy to help</h3>
+        <p class="lead">We'll get back to you within one business day, whatever your question.</p>
+
+        <div class="contact-item">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7l9 6 9-6M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><div class="k">Email</div><div class="v">hello@nextcontract.ai</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.4-1.4a2 2 0 012.1-.4c.9.3 1.8.5 2.7.6a2 2 0 011.8 2.1z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><div class="k">Phone</div><div class="v">020 3468 1190</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.1 7-11.5A7 7 0 105 9.5C5 14.9 12 21 12 21z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.4" stroke="currentColor" stroke-width="1.7"/></svg></div>
+          <div><div class="k">Office</div><div class="v">27 Farringdon Street, London EC4A 4AB</div></div>
+        </div>
+      </div>
+
+      <form class="form-card reveal" id="contactForm">
+        <div class="form-row">
+          <div class="field">
+            <label for="fname">Full name</label>
+            <input id="fname" type="text" placeholder="Jordan Hill" required>
+          </div>
+          <div class="field">
+            <label for="femail">Work email</label>
+            <input id="femail" type="email" placeholder="jordan@yourcompany.co.uk" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="fcompany">Company</label>
+            <input id="fcompany" type="text" placeholder="Company name">
+          </div>
+          <div class="field">
+            <label for="ftrade">Trade</label>
+            <select id="ftrade">
+              <option>Commercial landscaping</option>
+              <option>Fencing contracting</option>
+              <option>Grounds maintenance</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="fmsg">Message</label>
+          <textarea id="fmsg" placeholder="Tell us a little about your business and working area"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Send message</button>
+        <p class="form-msg" id="formMsg">Thanks — we've received your message and will be in touch within one business day.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="logo">
+          <span class="logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 16L10 6L14 13L20 4" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          NextContract
+        </a>
+        <p>Helping landscaping, fencing and grounds maintenance contractors find more work.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Product</h5>
+        <a href="#how">How it works</a>
+        <a href="#report">Example report</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#who">Who it's for</a>
+        <a href="#contact">Contact</a>
+        <a href="#">Careers</a>
+        <a href="#">About</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+        <a href="#">Cookie policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 NextContract Ltd. NextContract provides research and ranking tools. We do not guarantee contract awards.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Subtle 3D tilt on the hero opportunity card, following the pointer
+  const heroVisual = document.querySelector('.opp-card-wrap');
+  const heroCard = document.getElementById('heroCard');
+  if (heroVisual && heroCard && window.matchMedia('(min-width:981px)').matches && window.matchMedia('(hover:hover)').matches) {
+    heroVisual.addEventListener('mousemove', (e) => {
+      const r = heroVisual.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      heroCard.style.transform = `perspective(1400px) rotateY(${-7 - px * 6}deg) rotateX(${3 - py * 6}deg) translateY(-2px)`;
+    });
+    heroVisual.addEventListener('mouseleave', () => { heroCard.style.transform = ''; });
+  }
+
+  // Subtle 3D tilt on the dashboard preview, following the pointer
+  const receiveVisual = document.querySelector('.receive-visual');
+  const receiveFrame = document.getElementById('receiveDeviceFrame');
+  if (receiveVisual && receiveFrame && window.matchMedia('(min-width:981px)').matches && window.matchMedia('(hover:hover)').matches) {
+    receiveVisual.addEventListener('mousemove', (e) => {
+      const r = receiveVisual.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      receiveFrame.style.transform = `perspective(1400px) rotateY(${5 - px * 8}deg) rotateX(${1.5 - py * 6}deg) translateY(-3px)`;
+    });
+    receiveVisual.addEventListener('mouseleave', () => { receiveFrame.style.transform = ''; });
+  }
+
+  // Gentle magnetic pull on primary buttons
+  document.querySelectorAll('.btn-primary').forEach((btn) => {
+    if (!window.matchMedia('(hover:hover)').matches) return;
+    btn.addEventListener('mousemove', (e) => {
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width / 2) * 0.18;
+      const y = (e.clientY - r.top - r.height / 2) * 0.35;
+      btn.style.transform = `translate(${x}px, ${y - 3}px)`;
+    });
+    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+  });
+
+  // Sticky header shadow
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 8);
+  }, { passive: true });
+
+  // Mobile menu
+  const menuOpen = document.getElementById('menuOpen');
+  const menuClose = document.getElementById('menuClose');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuOpen.addEventListener('click', () => mobileMenu.classList.add('open'));
+  menuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger > .reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Score ring animation (hero + report), triggered on view
+  function animateRing(id, circumference, percent){
+    const el = document.getElementById(id);
+    if(!el) return;
+    const offset = circumference - (percent/100) * circumference;
+    const ringObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          el.style.strokeDashoffset = offset;
+          ringObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    ringObserver.observe(el);
+  }
+  animateRing('ringHero', 2*Math.PI*24, 92);
+  animateRing('ringOpportunity', 2*Math.PI*76, 94);
+  animateRing('ringReceive', 2*Math.PI*35, 94);
+
+  // Confidence bar animation, triggered on view
+  function animateBar(id, percent){
+    const el = document.getElementById(id);
+    if(!el) return;
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          el.style.width = percent + '%';
+          barObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    barObserver.observe(el);
+  }
+  animateBar('confidenceBar', 91);
+  animateBar('miniConfidenceBar', 91);
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(openItem => {
+        if(openItem !== item){
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-a').style.maxHeight = null;
+        }
+      });
+      if(isOpen){
+        item.classList.remove('open');
+        a.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Contact form (front-end only)
+  const contactForm = document.getElementById('contactForm');
+  const formMsg = document.getElementById('formMsg');
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formMsg.classList.add('show');
+    contactForm.reset();
+  });
+</script>
+</body>
+</html>
